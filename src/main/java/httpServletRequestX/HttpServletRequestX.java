@@ -11,8 +11,6 @@ import com.google.inject.Injector;
 
 /**
  * TODO
- * 
- * @author mreinwarth
  */
 public abstract class HttpServletRequestX extends LogicHttpServletRequestX {
 

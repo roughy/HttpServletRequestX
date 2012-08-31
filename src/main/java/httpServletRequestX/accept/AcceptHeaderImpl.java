@@ -2,16 +2,12 @@ package httpServletRequestX.accept;
 
 import httpServletRequestX.accept.contenttype.AcceptContenttypeComparator;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 import com.google.inject.Inject;
 
 /**
  * TODO
- * 
- * @author mreinwarth
  */
 public class AcceptHeaderImpl implements AcceptHeader {
 
@@ -23,8 +19,8 @@ public class AcceptHeaderImpl implements AcceptHeader {
     private static final String                TYPE_JSON            = "application/json";
 
     private String                             content;
-    private final List<AcceptContentype>       contentTypes         = new ArrayList<AcceptContentype>();
-    private final Comparator<AcceptContentype> acceptContenttypeComparator;
+    private final AcceptContenTypeList         contentTypes         = new AcceptContenTypeList();
+    private final Comparator<AcceptContenType> acceptContenttypeComparator;
 
     @Inject
     public AcceptHeaderImpl(AcceptContenttypeComparator acceptContenttypeComparator) {
@@ -38,23 +34,23 @@ public class AcceptHeaderImpl implements AcceptHeader {
     }
 
     public boolean hasHtml() {
-        return contentTypes.contains(TYPE_HTML) || hasTextWildcard() || hasWildcard();
+        return contentTypes.containsType(TYPE_HTML) || hasTextWildcard() || hasWildcard();
     }
 
     public boolean hasJson() {
-        return contentTypes.contains(TYPE_JSON) || hasApplicationWildcard() || hasWildcard();
+        return contentTypes.containsType(TYPE_JSON) || hasApplicationWildcard() || hasWildcard();
     }
 
     private boolean hasWildcard() {
-        return contentTypes.contains(TYPE_ALL);
+        return contentTypes.containsType(TYPE_ALL);
     }
 
     private boolean hasTextWildcard() {
-        return contentTypes.contains(TYPE_ALL_TEXT);
+        return contentTypes.containsType(TYPE_ALL_TEXT);
     }
 
     private boolean hasApplicationWildcard() {
-        return contentTypes.contains(TYPE_ALL_APPLICATION);
+        return contentTypes.containsType(TYPE_ALL_APPLICATION);
     }
 
     private void parseContent() {
@@ -63,9 +59,9 @@ public class AcceptHeaderImpl implements AcceptHeader {
             String[] splittedContenttype = contentType.split(";");
             if (splittedContenttype.length == 2) {
                 Float quality = parseQuality(splittedContenttype[1]);
-                this.contentTypes.add(new AcceptContentype(contentType, quality));
+                this.contentTypes.add(new AcceptContenType(contentType, quality));
             } else {
-                this.contentTypes.add(new AcceptContentype(contentType));
+                this.contentTypes.add(new AcceptContenType(contentType));
             }
         }
 
