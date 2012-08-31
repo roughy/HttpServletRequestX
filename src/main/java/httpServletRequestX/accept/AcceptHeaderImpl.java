@@ -1,18 +1,27 @@
 package httpServletRequestX.accept;
 
+import com.google.inject.Inject;
+
 /**
  * TODO
  */
 public class AcceptHeaderImpl implements AcceptHeader {
 
-    private static final String        TYPE_ALL             = "*/*";
-    private static final String        TYPE_ALL_TEXT        = "text/*";
-    private static final String        TYPE_HTML            = "text/html";
-    private static final String        TYPE_ALL_APPLICATION = "application/*";
-    private static final String        TYPE_JSON            = "application/json";
+    private static final String           TYPE_ALL             = "*/*";
+    private static final String           TYPE_ALL_TEXT        = "text/*";
+    private static final String           TYPE_HTML            = "text/html";
+    private static final String           TYPE_ALL_APPLICATION = "application/*";
+    private static final String           TYPE_JSON            = "application/json";
 
-    private String                     content;
-    private final AcceptContenTypeList contentTypes         = new AcceptContenTypeList();
+    private String                        content;
+    private final AcceptContenTypeList    contentTypes;
+    private final AcceptContenTypeFactory contentTypeFactory;
+
+    @Inject
+    public AcceptHeaderImpl(AcceptContenTypeList contentTypes, AcceptContenTypeFactory contentTypeFactory) {
+        this.contentTypes = contentTypes;
+        this.contentTypeFactory = contentTypeFactory;
+    }
 
     public AcceptHeader setContent(String content) {
         this.content = content;
@@ -77,9 +86,9 @@ public class AcceptHeaderImpl implements AcceptHeader {
 
             if (splittedContenttype.length == 2) {
                 Float quality = parseQuality(splittedContenttype[1]);
-                this.contentTypes.add(new AcceptContenType(splittedContenttype[0], quality));
+                this.contentTypes.add(contentTypeFactory.get(splittedContenttype[0], quality));
             } else {
-                this.contentTypes.add(new AcceptContenType(splittedContenttype[0]));
+                this.contentTypes.add(contentTypeFactory.get(splittedContenttype[0]));
             }
         }
 

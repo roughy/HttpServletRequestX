@@ -13,7 +13,7 @@ public class AcceptHeaderImplUnitTest {
 
     @Before
     public void setUp() {
-        acceptHeader = new AcceptHeaderImpl();
+        acceptHeader = new AcceptHeaderImpl(new AcceptContenTypeList(), new AcceptContenTypeFactory());
     }
 
     @Test

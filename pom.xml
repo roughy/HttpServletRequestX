@@ -28,6 +28,12 @@
             <artifactId>guice</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.devbliss.doctest</groupId>
+            <artifactId>doctest</artifactId>
+            <version>0.5.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <developers>
         <developer>
