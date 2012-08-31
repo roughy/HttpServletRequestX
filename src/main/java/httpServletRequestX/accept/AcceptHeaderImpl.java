@@ -28,6 +28,7 @@ public class AcceptHeaderImpl implements AcceptHeader {
     }
 
     public AcceptHeader setContent(String content) {
+        this.contentTypes.clear();
         this.content = content;
         parseContent();
         return this;
