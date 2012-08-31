@@ -5,7 +5,7 @@ import httpServletRequestX.accept.AcceptHeader;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-public class LogicHttpServletRequestX extends HttpServletRequestWrapper {
+public class HttpServletRequestXWrapper extends HttpServletRequestWrapper {
 
     private final AcceptHeader acceptHeader;
 
@@ -14,7 +14,7 @@ public class LogicHttpServletRequestX extends HttpServletRequestWrapper {
      * 
      * @param request
      */
-    public LogicHttpServletRequestX(HttpServletRequest request, AcceptHeader acceptHeader) {
+    public HttpServletRequestXWrapper(HttpServletRequest request, AcceptHeader acceptHeader) {
         super(request);
 
         this.acceptHeader = acceptHeader;

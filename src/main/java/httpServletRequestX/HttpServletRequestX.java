@@ -10,22 +10,28 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 /**
- * TODO
+ * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the Accept Content type options.
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
-public abstract class HttpServletRequestX extends LogicHttpServletRequestX {
+public abstract class HttpServletRequestX extends HttpServletRequestXWrapper {
 
     private static Injector     injector;
     private static AcceptHeader ACCEPT_HEADER;
 
+    /**
+     * Guice injection preparations
+     */
     static {
         injector = Guice.createInjector(new GuiceModule());
         ACCEPT_HEADER = injector.getInstance(AcceptHeaderImpl.class);
     }
 
     /**
-     * TODO
+     * Base constructor that consumes the {@see HttpServletRequest} object
      * 
      * @param request
+     *            the {@see HttpServletRequest} object that has to be wrapped
      */
     public HttpServletRequestX(HttpServletRequest request) {
         super(request, ACCEPT_HEADER);

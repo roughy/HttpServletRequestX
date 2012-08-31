@@ -2,15 +2,19 @@ package httpServletRequestX.accept;
 
 /**
  * TODO
- * 
- * @author mreinwarth
  */
 public interface AcceptHeader {
 
-    public boolean hasHtml();
+    boolean acceptHtml();
 
-    public boolean hasJson();
+    boolean acceptJson();
 
-    public AcceptHeader setContent(String content);
+    AcceptHeader setContent(String content);
+
+    String getTop();
+
+    AcceptContenTypeList getContentTypes();
+
+    boolean acceptType(String type);
 
 }

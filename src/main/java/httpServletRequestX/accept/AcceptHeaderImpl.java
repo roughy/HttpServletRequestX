@@ -1,49 +1,59 @@
 package httpServletRequestX.accept;
 
-import httpServletRequestX.accept.contenttype.AcceptContenttypeComparator;
-
-import java.util.Comparator;
-
-import com.google.inject.Inject;
-
 /**
  * TODO
  */
 public class AcceptHeaderImpl implements AcceptHeader {
 
-    private static final String                TYPE_ALL             = "*/*";
-    private static final String                TYPE_ALL_TEXT        = "text/*";
-    private static final String                TYPE_HTML            = "text/html";
-    private static final String                TYPE_TEXT            = "text/plain";
-    private static final String                TYPE_ALL_APPLICATION = "application/*";
-    private static final String                TYPE_JSON            = "application/json";
+    private static final String        TYPE_ALL             = "*/*";
+    private static final String        TYPE_ALL_TEXT        = "text/*";
+    private static final String        TYPE_HTML            = "text/html";
+    private static final String        TYPE_ALL_APPLICATION = "application/*";
+    private static final String        TYPE_JSON            = "application/json";
 
-    private String                             content;
-    private final AcceptContenTypeList         contentTypes         = new AcceptContenTypeList();
-    private final Comparator<AcceptContenType> acceptContenttypeComparator;
-
-    @Inject
-    public AcceptHeaderImpl(AcceptContenttypeComparator acceptContenttypeComparator) {
-        this.acceptContenttypeComparator = acceptContenttypeComparator;
-    }
+    private String                     content;
+    private final AcceptContenTypeList contentTypes         = new AcceptContenTypeList();
 
     public AcceptHeader setContent(String content) {
-        this.contentTypes.clear();
         this.content = content;
         parseContent();
         return this;
     }
 
-    public boolean hasHtml() {
+    public String getTop() {
+        if (!contentTypes.isEmpty()) {
+            return contentTypes.get(0).getType();
+        }
+        return null;
+    }
+
+    public AcceptContenTypeList getContentTypes() {
+        return contentTypes;
+    }
+
+    public boolean acceptType(String type) {
+        String[] typeElements = type.split("/");
+        if (typeElements.length > 0) {
+            return contentTypes.containsType(type) || hasWildcard(typeElements[0]) || hasWildcard();
+        } else {
+            return contentTypes.containsType(type) || hasWildcard();
+        }
+    }
+
+    public boolean acceptHtml() {
         return contentTypes.containsType(TYPE_HTML) || hasTextWildcard() || hasWildcard();
     }
 
-    public boolean hasJson() {
+    public boolean acceptJson() {
         return contentTypes.containsType(TYPE_JSON) || hasApplicationWildcard() || hasWildcard();
     }
 
     private boolean hasWildcard() {
         return contentTypes.containsType(TYPE_ALL);
+    }
+
+    private boolean hasWildcard(String first) {
+        return contentTypes.containsType(first + "/*");
     }
 
     private boolean hasTextWildcard() {
@@ -55,18 +65,39 @@ public class AcceptHeaderImpl implements AcceptHeader {
     }
 
     private void parseContent() {
+        this.contentTypes.clear();
+
         String[] contentTypes = content.split(",");
         for (String contentType : contentTypes) {
             String[] splittedContenttype = contentType.split(";");
+
+            if (!hasParseableContentType(splittedContenttype)) {
+                continue;
+            }
+
             if (splittedContenttype.length == 2) {
                 Float quality = parseQuality(splittedContenttype[1]);
-                this.contentTypes.add(new AcceptContenType(contentType, quality));
+                this.contentTypes.add(new AcceptContenType(splittedContenttype[0], quality));
             } else {
-                this.contentTypes.add(new AcceptContenType(contentType));
+                this.contentTypes.add(new AcceptContenType(splittedContenttype[0]));
             }
         }
 
-        java.util.Collections.sort(this.contentTypes, acceptContenttypeComparator);
+        java.util.Collections.sort(this.contentTypes);
+    }
+
+    private boolean hasParseableContentType(String[] contentTypeElements) {
+        if (contentTypeElements == null || contentTypeElements.length == 0) {
+            return false;
+        }
+
+        for (String contentTypeElement : contentTypeElements) {
+            if (contentTypeElement.trim().equals("")) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private Float parseQuality(String input) {

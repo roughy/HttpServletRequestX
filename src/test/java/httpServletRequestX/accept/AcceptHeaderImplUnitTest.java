@@ -1,100 +1,149 @@
 package httpServletRequestX.accept;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import httpServletRequestX.accept.contenttype.AcceptContenttypeComparator;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 public class AcceptHeaderImplUnitTest {
 
-    @Mock
-    private AcceptContenttypeComparator acceptContenttypeComparator;
-
-    private AcceptHeader                acceptHeader;
+    private AcceptHeader acceptHeader;
 
     @Before
     public void setUp() {
-        acceptHeader = new AcceptHeaderImpl(acceptContenttypeComparator);
+        acceptHeader = new AcceptHeaderImpl();
     }
 
     @Test
     public void testHasHtml() {
-        AcceptHeader acceptHeader;
+        acceptHeader.setContent("text/html");
+        assertTrue(acceptHeader.acceptHtml());
 
-        acceptHeader = this.acceptHeader.setContent("text/html");
-        assertTrue(acceptHeader.hasHtml());
-
-        acceptHeader = this.acceptHeader.setContent("text/html,application/json,*/*");
-        assertTrue(acceptHeader.hasHtml());
+        acceptHeader.setContent("text/html,application/json,*/*");
+        assertTrue(acceptHeader.acceptHtml());
     }
 
     @Test
     public void testHasJson() {
-        AcceptHeader acceptHeader;
+        acceptHeader.setContent("application/json");
+        assertTrue(acceptHeader.acceptJson());
 
-        acceptHeader = this.acceptHeader.setContent("application/json");
-        assertTrue(acceptHeader.hasJson());
-
-        acceptHeader = this.acceptHeader.setContent("text/html,application/json,*/*");
-        assertTrue(acceptHeader.hasJson());
+        acceptHeader.setContent("text/html,application/json,*/*");
+        assertTrue(acceptHeader.acceptJson());
     }
 
     @Test
     public void testHasTypes() {
-        AcceptHeader acceptHeader;
+        acceptHeader.setContent("application/json");
+        assertTrue(acceptHeader.acceptJson());
+        assertFalse(acceptHeader.acceptHtml());
 
-        acceptHeader = this.acceptHeader.setContent("application/json");
-        assertTrue(acceptHeader.hasJson());
-        assertFalse(acceptHeader.hasHtml());
-
-        acceptHeader = this.acceptHeader.setContent("text/html,application/json,*/*");
-        assertTrue(acceptHeader.hasJson());
-        assertTrue(acceptHeader.hasHtml());
+        acceptHeader.setContent("text/html,application/json,*/*");
+        assertTrue(acceptHeader.acceptJson());
+        assertTrue(acceptHeader.acceptHtml());
     }
 
     @Test
     public void testHasWildcard() {
-        AcceptHeader acceptHeader;
+        acceptHeader.setContent("application/json");
+        assertTrue(acceptHeader.acceptJson());
+        assertFalse(acceptHeader.acceptHtml());
 
-        acceptHeader = this.acceptHeader.setContent("application/json");
-        assertTrue(acceptHeader.hasJson());
-        assertFalse(acceptHeader.hasHtml());
-
-        acceptHeader = this.acceptHeader.setContent("*/*");
-        assertTrue(acceptHeader.hasJson());
-        assertTrue(acceptHeader.hasHtml());
+        acceptHeader.setContent("*/*");
+        assertTrue(acceptHeader.acceptJson());
+        assertTrue(acceptHeader.acceptHtml());
     }
 
     @Test
     public void testHasTextWildcard() {
-        AcceptHeader acceptHeader;
+        acceptHeader.setContent("application/json");
+        assertTrue(acceptHeader.acceptJson());
+        assertFalse(acceptHeader.acceptHtml());
 
-        acceptHeader = this.acceptHeader.setContent("application/json");
-        assertTrue(acceptHeader.hasJson());
-        assertFalse(acceptHeader.hasHtml());
+        acceptHeader.setContent("text/*");
+        assertTrue(acceptHeader.acceptHtml());
+        assertFalse(acceptHeader.acceptJson());
 
-        acceptHeader = this.acceptHeader.setContent("text/*");
-        assertTrue(acceptHeader.hasHtml());
-        assertFalse(acceptHeader.hasJson());
-
-        acceptHeader = this.acceptHeader.setContent("application/json,text/*");
-        assertTrue(acceptHeader.hasHtml());
-        assertTrue(acceptHeader.hasJson());
+        acceptHeader.setContent("text/*,application/json;q=1.0");
+        assertTrue(acceptHeader.acceptHtml());
+        assertTrue(acceptHeader.acceptJson());
     }
 
     @Test
     public void testHasApplicationWildcard() {
-        AcceptHeader acceptHeader;
+        acceptHeader.setContent("application/json");
+        assertTrue(acceptHeader.acceptJson());
+        assertFalse(acceptHeader.acceptHtml());
 
-        acceptHeader = this.acceptHeader.setContent("application/json");
-        assertTrue(acceptHeader.hasJson());
-        assertFalse(acceptHeader.hasHtml());
+        acceptHeader.setContent("application/*");
+        assertTrue(acceptHeader.acceptJson());
+        assertFalse(acceptHeader.acceptHtml());
+    }
 
-        acceptHeader = this.acceptHeader.setContent("application/*");
-        assertTrue(acceptHeader.hasJson());
-        assertFalse(acceptHeader.hasHtml());
+    @Test
+    public void testQualitySortingWithGetTop() {
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,application/json;q=1.0");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,application/json");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent("application/json;q=1.0,text/*;q=1.0,text/html;q=0.7");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent("application/json,text/*;q=1.0,text/html;q=0.7");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent("text/*;q=0.7,text/html;q=0.7,application/json;q=1.0");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent("text/*;q=0.7,text/html;q=0.7,application/json;q=1");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent("text/*;q=0.7,text/html;q=0.7,application/json;q=.9");
+        assertEquals("application/json", acceptHeader.getTop());
+    }
+
+    @Test
+    public void testQualitySortingWithWrongSyntax() {
+        acceptHeader.setContent(",text/*;q=0.3,text/html;q=0.7,application/json;q=1.0");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent(",text/*;q=0.3,text/html;q=0.7,,,application/json;q=1.0");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent(",text/*;q=0.3,text/html;q=0.7,;,application/json;q=1.0");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent(";text/*;q=0.3,text/html;q=0.7,;,application/json;q=1.0");
+        assertEquals("application/json", acceptHeader.getTop());
+
+        acceptHeader.setContent(";text/*;q=0.3,text/html;q=0.7,;,application/json;");
+        assertEquals("application/json", acceptHeader.getTop());
+    }
+
+    @Test
+    public void testTheUnknown() {
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,roughy/foobar;q=1,application/json;q=1.0");
+        assertTrue(acceptHeader.acceptType("roughy/foobar"));
+
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,roughy/foobar;q=1,application/json;q=1.0");
+        assertEquals("roughy/foobar", acceptHeader.getTop());
+
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,*/*,application/json;q=1.0");
+        assertTrue(acceptHeader.acceptType("roughy/foobar"));
+
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,roughy/*;q=1,application/json;q=1.0");
+        assertTrue(acceptHeader.acceptType("roughy/foobar"));
+    }
+
+    @Test
+    public void testTheUnknownWithWrongSyntax() {
+        acceptHeader.setContent("text/*;q=0.3,text/html;q=0.7,roughy/*;q=1,application/json;q=1.0");
+        assertTrue(acceptHeader.acceptType("roughy/"));
+        assertFalse(acceptHeader.acceptType("/"));
+        assertFalse(acceptHeader.acceptType("/foobar"));
     }
 }

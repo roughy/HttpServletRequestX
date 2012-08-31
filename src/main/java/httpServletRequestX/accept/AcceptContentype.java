@@ -15,8 +15,33 @@ public class AcceptContenType implements Comparable<AcceptContenType> {
 
     public AcceptContenType(String type, Float quality, int level) {
         this.type = type.trim();
+        if (this.type.equals("")) {
+            throw new IllegalArgumentException("Field \"type\" is empty!");
+        }
+
         this.quality = quality != null ? quality : 1.0f;
         this.level = level;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @return the quality
+     */
+    public Float getQuality() {
+        return quality;
+    }
+
+    /**
+     * @return the level
+     */
+    public int getLevel() {
+        return level;
     }
 
     public boolean hasType(String type) {
