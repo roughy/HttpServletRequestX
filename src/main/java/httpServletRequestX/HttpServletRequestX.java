@@ -14,7 +14,7 @@ import com.google.inject.Injector;
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
-public abstract class HttpServletRequestX extends HttpServletRequestXWrapper {
+public class HttpServletRequestX extends HttpServletRequestXWrapper {
 
     private static Injector     injector;
     private static AcceptHeader ACCEPT_HEADER;
