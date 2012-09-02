@@ -2,24 +2,28 @@ package httpServletRequestX.accept;
 
 public class AcceptContenType implements Comparable<AcceptContenType> {
     public final String type;
-    public final Float  quality;
+    public final float  quality;
     public final int    level;
 
     public AcceptContenType(String type) {
-        this(type, null, 0);
+        this(type, 1.0f, 0);
     }
 
-    public AcceptContenType(String type, Float quality) {
+    public AcceptContenType(String type, float quality) {
         this(type, quality, 0);
     }
 
-    public AcceptContenType(String type, Float quality, int level) {
+    public AcceptContenType(String type, float quality, int level) {
+        if (type == null) {
+            throw new IllegalArgumentException("Field \"type\" is empty!");
+        }
+
         this.type = type.trim();
         if (this.type.equals("")) {
             throw new IllegalArgumentException("Field \"type\" is empty!");
         }
 
-        this.quality = quality != null ? quality : 1.0f;
+        this.quality = quality;
         this.level = level;
     }
 
@@ -33,7 +37,7 @@ public class AcceptContenType implements Comparable<AcceptContenType> {
     /**
      * @return the quality
      */
-    public Float getQuality() {
+    public float getQuality() {
         return quality;
     }
 
