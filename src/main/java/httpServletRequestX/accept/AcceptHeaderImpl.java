@@ -92,7 +92,7 @@ public class AcceptHeaderImpl implements AcceptHeader {
             }
         }
 
-        // java.util.Collections.sort(this.contentTypeList);
+        java.util.Collections.sort(this.contentTypeList);
     }
 
     private boolean hasParseableContentType(String[] contentTypeElements) {
