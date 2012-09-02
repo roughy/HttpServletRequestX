@@ -1,5 +1,10 @@
 package httpServletRequestX.accept;
 
+/**
+ * Unit test case for {@See AcceptContenTypeFactory}
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com
+ */
 public class AcceptContenTypeFactory {
     public AcceptContenType get(String type) {
         return new AcceptContenType(type);

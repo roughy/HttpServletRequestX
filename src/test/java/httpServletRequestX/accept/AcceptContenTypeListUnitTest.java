@@ -6,6 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Unit test case for {@See AcceptContenTypeList}
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com
+ */
 public class AcceptContenTypeListUnitTest {
 
     private static final String           TYPA              = "testtype/A";

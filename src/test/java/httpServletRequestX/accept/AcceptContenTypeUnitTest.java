@@ -7,6 +7,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Unit test case for {@See AcceptContenType}
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com
+ */
 public class AcceptContenTypeUnitTest {
 
     private static final String TYPE    = "unittest/testtype";
