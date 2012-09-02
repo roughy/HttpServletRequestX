@@ -1,4 +1,4 @@
-package httpServletRequestX.accept;
+package httpServletRequestX.accept.contentType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

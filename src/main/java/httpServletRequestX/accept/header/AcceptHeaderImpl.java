@@ -1,4 +1,7 @@
-package httpServletRequestX.accept;
+package httpServletRequestX.accept.header;
+
+import httpServletRequestX.accept.contentType.AcceptContenTypeFactory;
+import httpServletRequestX.accept.contentType.AcceptContenTypeList;
 
 import com.google.inject.Inject;
 

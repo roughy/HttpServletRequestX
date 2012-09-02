@@ -1,4 +1,6 @@
-package httpServletRequestX.accept;
+package httpServletRequestX.accept.contentType;
+
+import httpServletRequestX.accept.contentType.AcceptContenType;
 
 /**
  * Unit test case for {@See AcceptContenTypeFactory}

@@ -1,4 +1,6 @@
-package httpServletRequestX.accept;
+package httpServletRequestX.accept.header;
+
+import httpServletRequestX.accept.contentType.AcceptContenTypeList;
 
 /**
  * TODO

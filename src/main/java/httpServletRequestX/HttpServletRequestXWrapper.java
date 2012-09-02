@@ -1,6 +1,6 @@
 package httpServletRequestX;
 
-import httpServletRequestX.accept.AcceptHeader;
+import httpServletRequestX.accept.header.AcceptHeader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

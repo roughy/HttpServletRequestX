@@ -1,7 +1,7 @@
 package httpServletRequestX;
 
-import httpServletRequestX.accept.AcceptHeader;
-import httpServletRequestX.accept.AcceptHeaderImpl;
+import httpServletRequestX.accept.header.AcceptHeader;
+import httpServletRequestX.accept.header.AcceptHeaderImpl;
 import httpServletRequestX.inject.GuiceModule;
 
 import javax.servlet.http.HttpServletRequest;

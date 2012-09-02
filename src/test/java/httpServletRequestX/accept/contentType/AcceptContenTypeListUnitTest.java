@@ -1,7 +1,9 @@
-package httpServletRequestX.accept;
+package httpServletRequestX.accept.contentType;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import httpServletRequestX.accept.contentType.AcceptContenType;
+import httpServletRequestX.accept.contentType.AcceptContenTypeList;
 
 import org.junit.Before;
 import org.junit.Test;
