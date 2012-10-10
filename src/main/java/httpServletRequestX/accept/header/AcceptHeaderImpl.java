@@ -6,7 +6,9 @@ import httpServletRequestX.accept.contentType.AcceptContenTypeList;
 import com.google.inject.Inject;
 
 /**
- * TODO
+ * Bunch of convenience functions useful for an accept header.
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
 public class AcceptHeaderImpl implements AcceptHeader {
 
