@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the
- * Accept Content type options.
+ * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle the accept
+ * content type options.
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
@@ -28,36 +28,37 @@ public class HttpServletRequestXWrapper extends HttpServletRequestWrapper {
     }
 
     /**
-     * TODO
+     * Convenience getter function for the accept header (e.g. "ACCEPT: text/html"). Parses the content string and
+     * builds the {@see AcceptHeader}
      * 
-     * @return
+     * @return the {@see AcceptHeader} parsed out of the request header string (e.g. "ACCEPT: text/html")
      */
     public AcceptHeader getAccept() {
         return acceptHeader.setContent(getHeader("accept"));
     }
 
     /**
-     * TODO
+     * Convenience getter function for the accept charset header (e.g. "ACCEPT-CHARSET: utf-8")
      * 
-     * @return
+     * @return an unparsed string from the related request header (e.g. "utf-8")
      */
     public String getAcceptCharset() {
         return getHeader("accept-charset");
     }
 
     /**
-     * TODO
+     * Convenience getter function for the accept encoding header (e.g. "ACCEPT-ENCODING: utf-8")
      * 
-     * @return
+     * @return an unparsed string from the related request header (e.g. "utf-8")
      */
     public String getAcceptEncoding() {
         return getHeader("accept-encoding");
     }
 
     /**
-     * TODO
+     * Convenience getter function for the accept language header (e.g. "ACCEPT-LANGUAGE: en.uk")
      * 
-     * @return
+     * @return an unparsed string from the related request header (e.g. "en.uk")
      */
     public String getAcceptLanguage() {
         return getHeader("accept-language");

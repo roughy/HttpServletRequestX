@@ -10,8 +10,8 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 /**
- * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the
- * Accept Content type options.
+ * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle the accept
+ * content type options.
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
