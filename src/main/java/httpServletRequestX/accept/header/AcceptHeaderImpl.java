@@ -21,12 +21,12 @@ public class AcceptHeaderImpl implements AcceptHeader {
     private final AcceptContenTypeFactory contentTypeFactory;
 
     @Inject
-    public AcceptHeaderImpl(AcceptContenTypeList contentTypeList, AcceptContenTypeFactory contentTypeFactory) {
+    public AcceptHeaderImpl(final AcceptContenTypeList contentTypeList, final AcceptContenTypeFactory contentTypeFactory) {
         this.contentTypeList = contentTypeList;
         this.contentTypeFactory = contentTypeFactory;
     }
 
-    public AcceptHeader setContent(String content) {
+    public AcceptHeader setContent(final String content) {
         this.content = content;
         parseContent();
         return this;
@@ -43,8 +43,8 @@ public class AcceptHeaderImpl implements AcceptHeader {
         return contentTypeList;
     }
 
-    public boolean acceptType(String type) {
-        String[] typeElements = type.split("/");
+    public boolean acceptType(final String type) {
+        final String[] typeElements = type.split("/");
         if (typeElements.length > 0) {
             return contentTypeList.containsType(type) || hasWildcard(typeElements[0]) || hasWildcard();
         } else {
@@ -64,7 +64,7 @@ public class AcceptHeaderImpl implements AcceptHeader {
         return contentTypeList.containsType(TYPE_ALL);
     }
 
-    private boolean hasWildcard(String first) {
+    private boolean hasWildcard(final String first) {
         return contentTypeList.containsType(first + "/*");
     }
 
@@ -77,33 +77,33 @@ public class AcceptHeaderImpl implements AcceptHeader {
     }
 
     private void parseContent() {
-        this.contentTypeList.clear();
+        contentTypeList.clear();
 
-        String[] contentTypes = content.split(",");
-        for (String contentType : contentTypes) {
-            String[] splittedContenttype = contentType.split(";");
+        final String[] contentTypes = content.split(",");
+        for (final String contentType : contentTypes) {
+            final String[] splittedContenttype = contentType.split(";");
 
             if (!hasParseableContentType(splittedContenttype)) {
                 continue;
             }
 
             if (splittedContenttype.length == 2) {
-                Float quality = parseQuality(splittedContenttype[1]);
-                this.contentTypeList.add(contentTypeFactory.get(splittedContenttype[0], quality));
+                final Float quality = parseQuality(splittedContenttype[1]);
+                contentTypeList.add(contentTypeFactory.get(splittedContenttype[0], quality));
             } else {
-                this.contentTypeList.add(contentTypeFactory.get(splittedContenttype[0]));
+                contentTypeList.add(contentTypeFactory.get(splittedContenttype[0]));
             }
         }
 
-        java.util.Collections.sort(this.contentTypeList);
+        java.util.Collections.sort(contentTypeList);
     }
 
-    private boolean hasParseableContentType(String[] contentTypeElements) {
+    private boolean hasParseableContentType(final String[] contentTypeElements) {
         if (contentTypeElements == null || contentTypeElements.length == 0) {
             return false;
         }
 
-        for (String contentTypeElement : contentTypeElements) {
+        for (final String contentTypeElement : contentTypeElements) {
             if (contentTypeElement.trim().equals("")) {
                 return false;
             }
@@ -112,8 +112,8 @@ public class AcceptHeaderImpl implements AcceptHeader {
         return true;
     }
 
-    private Float parseQuality(String input) {
-        String[] quality = input.split("=");
+    private Float parseQuality(final String input) {
+        final String[] quality = input.split("=");
 
         if (quality[0].equals("q")) {
             return Float.valueOf(quality[1]);

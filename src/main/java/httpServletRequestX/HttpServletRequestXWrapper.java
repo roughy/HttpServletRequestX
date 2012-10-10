@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the Accept Content type options.
+ * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the
+ * Accept Content type options.
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
@@ -17,12 +18,10 @@ public class HttpServletRequestXWrapper extends HttpServletRequestWrapper {
     /**
      * Constructor
      * 
-     * @param request
-     *            the {@see HttpServletRequest} object that has to be wrapped
-     * @param acceptHeader
-     *            the {@see AcceptHeader} object used for the content parsing
+     * @param request the {@see HttpServletRequest} object that has to be wrapped
+     * @param acceptHeader the {@see AcceptHeader} object used for the content parsing
      */
-    public HttpServletRequestXWrapper(HttpServletRequest request, AcceptHeader acceptHeader) {
+    public HttpServletRequestXWrapper(final HttpServletRequest request, final AcceptHeader acceptHeader) {
         super(request);
 
         this.acceptHeader = acceptHeader;

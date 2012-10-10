@@ -14,6 +14,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Dummy request implementation of {@link HttpServletRequest} interface.
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com>
+ */
 public class HttpServletRequestDummy implements HttpServletRequest {
 
     public String       accept         = "text/html;q=0.9,application/json,text/*;q=0.1";
@@ -40,7 +45,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public Object getAttribute(String name) {
+    public Object getAttribute(final String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -55,7 +60,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
+    public void setCharacterEncoding(final String env) throws UnsupportedEncodingException {
         // TODO Auto-generated method stub
 
     }
@@ -75,7 +80,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public String getParameter(String name) {
+    public String getParameter(final String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -85,7 +90,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public String[] getParameterValues(String name) {
+    public String[] getParameterValues(final String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -130,12 +135,12 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public void setAttribute(String name, Object o) {
+    public void setAttribute(final String name, final Object o) {
         // TODO Auto-generated method stub
 
     }
 
-    public void removeAttribute(String name) {
+    public void removeAttribute(final String name) {
         // TODO Auto-generated method stub
 
     }
@@ -155,12 +160,12 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return false;
     }
 
-    public RequestDispatcher getRequestDispatcher(String path) {
+    public RequestDispatcher getRequestDispatcher(final String path) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public String getRealPath(String path) {
+    public String getRealPath(final String path) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -195,12 +200,12 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public long getDateHeader(String name) {
+    public long getDateHeader(final String name) {
         // TODO Auto-generated method stub
         return 0;
     }
 
-    public Enumeration getHeaders(String name) {
+    public Enumeration getHeaders(final String name) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -210,7 +215,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public int getIntHeader(String name) {
+    public int getIntHeader(final String name) {
         // TODO Auto-generated method stub
         return 0;
     }
@@ -245,7 +250,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public boolean isUserInRole(String role) {
+    public boolean isUserInRole(final String role) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -275,7 +280,7 @@ public class HttpServletRequestDummy implements HttpServletRequest {
         return null;
     }
 
-    public HttpSession getSession(boolean create) {
+    public HttpSession getSession(final boolean create) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -10,7 +10,8 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 /**
- * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the Accept Content type options.
+ * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle with the
+ * Accept Content type options.
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
@@ -30,10 +31,9 @@ public class HttpServletRequestX extends HttpServletRequestXWrapper {
     /**
      * Base constructor that consumes the {@see HttpServletRequest} object
      * 
-     * @param request
-     *            the {@see HttpServletRequest} object that has to be wrapped
+     * @param request the {@see HttpServletRequest} object that has to be wrapped
      */
-    public HttpServletRequestX(HttpServletRequest request) {
+    public HttpServletRequestX(final HttpServletRequest request) {
         super(request, ACCEPT_HEADER);
     }
 

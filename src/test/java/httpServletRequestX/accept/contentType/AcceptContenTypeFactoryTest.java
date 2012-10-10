@@ -17,11 +17,11 @@ public class AcceptContenTypeFactoryTest {
 
     @Test
     public void testGetWithType() {
-        String contentType = "contenttype/test";
-        float defaultQuality = 1.0f;
-        int defaultLevel = 0;
+        final String contentType = "contenttype/test";
+        final float defaultQuality = 1.0f;
+        final int defaultLevel = 0;
 
-        AcceptContenType acceptContentType = acceptContenTypeFactory.get(contentType);
+        final AcceptContenType acceptContentType = acceptContenTypeFactory.get(contentType);
         assertEquals(contentType, acceptContentType.type);
         assertTrue(defaultQuality == acceptContentType.quality);
         assertEquals(defaultLevel, acceptContentType.level);
@@ -29,11 +29,11 @@ public class AcceptContenTypeFactoryTest {
 
     @Test
     public void testGetWithTypeAndQuality() {
-        String contentType = "contenttype/test";
-        float testQuality = 0.3f;
-        int defaultLevel = 0;
+        final String contentType = "contenttype/test";
+        final float testQuality = 0.3f;
+        final int defaultLevel = 0;
 
-        AcceptContenType acceptContentType = acceptContenTypeFactory.get(contentType, testQuality);
+        final AcceptContenType acceptContentType = acceptContenTypeFactory.get(contentType, testQuality);
         assertEquals(contentType, acceptContentType.type);
         assertTrue(testQuality == acceptContentType.quality);
         assertEquals(defaultLevel, acceptContentType.level);
@@ -41,11 +41,11 @@ public class AcceptContenTypeFactoryTest {
 
     @Test
     public void get() {
-        String contentType = "contenttype/test";
-        float testQuality = 0.3f;
-        int testLevel = 2;
+        final String contentType = "contenttype/test";
+        final float testQuality = 0.3f;
+        final int testLevel = 2;
 
-        AcceptContenType acceptContentType = acceptContenTypeFactory.get(contentType, testQuality, testLevel);
+        final AcceptContenType acceptContentType = acceptContenTypeFactory.get(contentType, testQuality, testLevel);
         assertEquals(contentType, acceptContentType.type);
         assertTrue(testQuality == acceptContentType.quality);
         assertEquals(testLevel, acceptContentType.level);

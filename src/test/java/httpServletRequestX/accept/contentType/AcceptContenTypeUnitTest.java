@@ -45,7 +45,7 @@ public class AcceptContenTypeUnitTest {
 
     @Test
     public void hasType() {
-        String nonType = "nonExitingType";
+        final String nonType = "nonExitingType";
 
         assertTrue(acceptContentType.hasType(TYPE));
         assertFalse(acceptContentType.hasType(nonType));

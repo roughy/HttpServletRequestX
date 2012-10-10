@@ -5,8 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import httpServletRequestX.accept.contentType.AcceptContenTypeFactory;
 import httpServletRequestX.accept.contentType.AcceptContenTypeList;
-import httpServletRequestX.accept.header.AcceptHeader;
-import httpServletRequestX.accept.header.AcceptHeaderImpl;
 
 import org.junit.Before;
 import org.junit.Test;

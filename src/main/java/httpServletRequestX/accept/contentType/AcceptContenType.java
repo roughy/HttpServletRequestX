@@ -5,15 +5,15 @@ public class AcceptContenType implements Comparable<AcceptContenType> {
     public final float  quality;
     public final int    level;
 
-    public AcceptContenType(String type) {
+    public AcceptContenType(final String type) {
         this(type, 1.0f, 0);
     }
 
-    public AcceptContenType(String type, float quality) {
+    public AcceptContenType(final String type, final float quality) {
         this(type, quality, 0);
     }
 
-    public AcceptContenType(String type, float quality, int level) {
+    public AcceptContenType(final String type, final float quality, final int level) {
         if (type == null) {
             throw new IllegalArgumentException("Field \"type\" is empty!");
         }
@@ -48,11 +48,11 @@ public class AcceptContenType implements Comparable<AcceptContenType> {
         return level;
     }
 
-    public boolean hasType(String type) {
+    public boolean hasType(final String type) {
         return this.type.equals(type);
     }
 
-    public int compareTo(AcceptContenType other) {
+    public int compareTo(final AcceptContenType other) {
         if (other.quality > quality) {
             return 1;
         }
