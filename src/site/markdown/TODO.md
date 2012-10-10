@@ -1,9 +1,9 @@
 TODOs
 =====
-- documentation
-- inline documentation
+- update to doctest 0.5.3
 - api documentation
-- add more convinience options for standard accept content types
 - migrate to github.com
+- mvn site
 - integrate github pages
-- deploy 0.1 to maven central
+- mvn deploy (to maven central)
+- add more convinience options for standard accept content types

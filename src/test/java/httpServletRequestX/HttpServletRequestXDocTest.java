@@ -25,22 +25,14 @@ public class HttpServletRequestXDocTest extends DocTest {
     }
 
     @Test
-    public void testDummyRequestPreCondition() throws Exception {
-        sayNextSection("How to use");
-        say("Incoming request of type HttpServletRequest:");
-        sayObject(dummyRequest);
+    public void testGetAccept() throws Exception {
+        sayNextSection("Accept");
 
-        assertTrue(httpServletRequestX.getAccept() instanceof AcceptHeader);
-        assertEquals(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset());
-        assertEquals(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding());
-        assertEquals(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage());
-
-        say("How to invoke!");
-        sayPreformattedCode("import de.roughy.util.http.httpServletRequestX.HttpServletRequestX;\n  [...]\n"
-                + "  public void handleRequest(HttpServletRequest request) {\n"
-                + "    HttpServletRequestX httpServletRequestX = new HttpServletRequestX(request);\n"
-                + "    AcceptHeader acceptHeader = httpServletRequestX.getAccept();\n" + "    \n" + "    if (acceptHeader.acceptHtml()) {\n"
-                + "      renderHtml();\n" + "    } else if (acceptHeader.acceptJson()) {\n" + "      renderJson();\n" + "    }\n" + "  }\n  [...]\n");
+        AcceptHeader accept = httpServletRequestX.getAccept();
+        assertEquals("application/json", accept.getTop());
+        assertTrue(accept.acceptHtml());
+        assertTrue(accept.acceptJson());
+        assertTrue(accept.acceptType("application/json"));
     }
 
     @Test
@@ -48,10 +40,12 @@ public class HttpServletRequestXDocTest extends DocTest {
         sayNextSection("Accept Charset");
         say("Any Accept-Charset-header will be passed unparsed by calling the method getAcceptCharset().");
 
+        say("A request with the following header:");
         sayPreformattedCode("Accept-Charset: " + dummyRequest.acceptCharset);
         assertEqualsAndSay(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset());
 
         dummyRequest.acceptCharset = "any other charset";
+        say("Even unconventional header like this:");
         sayPreformattedCode("Accept-Charset: " + dummyRequest.acceptCharset);
         assertEqualsAndSay(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset());
     }
@@ -61,10 +55,12 @@ public class HttpServletRequestXDocTest extends DocTest {
         sayNextSection("Accept Encoding");
         say("Any Accept-Encoding-header will be passed unparsed by calling the method getAcceptEncoding().");
 
+        say("A request with the following header:");
         sayPreformattedCode("Accept-Encoding: " + dummyRequest.acceptEncoding);
         assertEqualsAndSay(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding());
 
         dummyRequest.acceptEncoding = "any other encoding";
+        say("Even unconventional header like this:");
         sayPreformattedCode("Accept-Encoding: " + dummyRequest.acceptEncoding);
         assertEqualsAndSay(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding());
     }
@@ -74,11 +70,14 @@ public class HttpServletRequestXDocTest extends DocTest {
         sayNextSection("Accept Language");
         say("Any Accept-Language-header will be passed unparsed by calling the method getAcceptLanguage().");
 
+        say("A request with the following header:");
         sayPreformattedCode("Accept-Language: " + dummyRequest.acceptLanguage);
         assertEqualsAndSay(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage());
 
         dummyRequest.acceptLanguage = "any other language";
+        say("Even unconventional header like this:");
         sayPreformattedCode("Accept-Language: " + dummyRequest.acceptLanguage);
         assertEqualsAndSay(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage());
     }
+
 }
