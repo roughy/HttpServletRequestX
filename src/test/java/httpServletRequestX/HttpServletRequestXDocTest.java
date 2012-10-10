@@ -9,6 +9,11 @@ import org.junit.Test;
 
 import com.devbliss.doctest.DocTest;
 
+/**
+ * Tests and API documentation done within this class.
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com>
+ */
 public class HttpServletRequestXDocTest extends DocTest {
 
     private HttpServletRequestX           httpServletRequestX;

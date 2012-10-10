@@ -38,4 +38,5 @@ public class AcceptContenTypeListUnitTest {
         assertTrue(acceptContenTypeList.containsType(TYPC));
         assertFalse(acceptContenTypeList.containsType("some unknown type"));
     }
+
 }

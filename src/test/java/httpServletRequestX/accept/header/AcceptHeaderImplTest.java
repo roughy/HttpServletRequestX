@@ -9,6 +9,11 @@ import httpServletRequestX.accept.contentType.AcceptContenTypeList;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests for {@see AcceptHeaderImpl}
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com>
+ */
 public class AcceptHeaderImplTest {
 
     private AcceptHeader acceptHeader;

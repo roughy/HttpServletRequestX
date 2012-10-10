@@ -6,6 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests for {@see AcceptContenTypeFactory}
+ * 
+ * @author Marco Reinwarth <marcoreinwarth@gmail.com>
+ */
 public class AcceptContenTypeFactoryTest {
 
     private AcceptContenTypeFactory acceptContenTypeFactory;
