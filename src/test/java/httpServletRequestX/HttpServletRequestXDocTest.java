@@ -19,6 +19,11 @@ public class HttpServletRequestXDocTest extends DocTest {
     private HttpServletRequestX           httpServletRequestX;
     private final HttpServletRequestDummy dummyRequest = new HttpServletRequestDummy();
 
+    @Override
+    protected String getFileName() {
+        return "HttpServletRequestX API";
+    }
+
     @Before
     public void setUp() {
         httpServletRequestX = new HttpServletRequestX(dummyRequest);
@@ -42,12 +47,14 @@ public class HttpServletRequestXDocTest extends DocTest {
 
         say("A request with the following header:");
         sayPreformattedCode("Accept-Charset: " + dummyRequest.acceptCharset);
-        assertEqualsAndSay(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset());
+        assertEqualsAndSay(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset(),
+                "getAcceptCharset() returns the content of header unparsed: \"" + httpServletRequestX.getAcceptCharset() + "\"");
 
         dummyRequest.acceptCharset = "any other charset";
         say("Even unconventional header like this:");
         sayPreformattedCode("Accept-Charset: " + dummyRequest.acceptCharset);
-        assertEqualsAndSay(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset());
+        assertEqualsAndSay(dummyRequest.acceptCharset, httpServletRequestX.getAcceptCharset(),
+                "getAcceptCharset() returns the content of header unparsed: \"" + httpServletRequestX.getAcceptCharset() + "\"");
     }
 
     @Test
@@ -57,12 +64,14 @@ public class HttpServletRequestXDocTest extends DocTest {
 
         say("A request with the following header:");
         sayPreformattedCode("Accept-Encoding: " + dummyRequest.acceptEncoding);
-        assertEqualsAndSay(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding());
+        assertEqualsAndSay(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding(),
+                "getAcceptEncoding() returns the content of header unparsed: \"" + httpServletRequestX.getAcceptEncoding() + "\"");
 
         dummyRequest.acceptEncoding = "any other encoding";
         say("Even unconventional header like this:");
         sayPreformattedCode("Accept-Encoding: " + dummyRequest.acceptEncoding);
-        assertEqualsAndSay(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding());
+        assertEqualsAndSay(dummyRequest.acceptEncoding, httpServletRequestX.getAcceptEncoding(),
+                "getAcceptEncoding() returns the content of header unparsed: \"" + httpServletRequestX.getAcceptEncoding() + "\"");
     }
 
     @Test
@@ -72,12 +81,14 @@ public class HttpServletRequestXDocTest extends DocTest {
 
         say("A request with the following header:");
         sayPreformattedCode("Accept-Language: " + dummyRequest.acceptLanguage);
-        assertEqualsAndSay(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage());
+        assertEqualsAndSay(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage(),
+                "getAcceptLanguage() returns the content of header unparsed: \"" + httpServletRequestX.getAcceptLanguage() + "\"");
 
         dummyRequest.acceptLanguage = "any other language";
         say("Even unconventional header like this:");
         sayPreformattedCode("Accept-Language: " + dummyRequest.acceptLanguage);
-        assertEqualsAndSay(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage());
+        assertEqualsAndSay(dummyRequest.acceptLanguage, httpServletRequestX.getAcceptLanguage(),
+                "getAcceptLanguage() returns the content of header unparsed: \"" + httpServletRequestX.getAcceptLanguage() + "\"");
     }
 
 }
