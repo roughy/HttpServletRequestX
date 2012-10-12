@@ -1,46 +1,44 @@
-HttpServletRequestX
-===================
+# HttpServletRequestX
 
-Introduction
-~~~~~~~~~~~~
-Extension for javax.servlet.http.HttpServletRequest. Gives easy access to Http 1.1 request accept and accept-* header. 
-The accept header gives some convinience functions to know, what content type the client is able to accept.
+## Introduction
 
-Using the javax.servlet.http.HttpServletRequestWrapper to wrap the real HttpServletRequest object.  
+Extension for javax.servlet.http.HttpServletRequest. Gives easy access to Http 1.1 request accept and accept-* header.
+The accept header gives some convenience functions to know, what content type the client is able to accept. See
+[w3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
 
-Installation
-~~~~~~~~~~~~
+Using the javax.servlet.http.HttpServletRequestWrapper to wrap the real HttpServletRequest object.
+
+## Installation
+
 See maven central
 TODO link
 
-Usage
-~~~~~
-<code>
-import de.roughy.util.http.httpServletRequestX.HttpServletRequestX;
-import de.roughy.util.http.httpServletRequestX.accept.header.AcceptHeader;
+## Usage
 
-public void handleRequest(javax.servlet.http.HttpServletRequest request) {
+        import de.roughy.util.http.httpServletRequestX.HttpServletRequestX;
+        import de.roughy.util.http.httpServletRequestX.accept.header.AcceptHeader;
 
-    HttpServletRequestX httpServletRequestX = new HttpServletRequestX(request);
+        public void handleRequest(javax.servlet.http.HttpServletRequest request) {
 
-    AcceptHeader accept   = httpServletRequestX.getAccept();
-    String acceptCharset  = httpServletRequestX.getAcceptCharset();
-    String acceptEncoding = httpServletRequestX.getAcceptEncoding();
-    String acceptLanguage = httpServletRequestX.getAcceptLanguage();
+            HttpServletRequestX httpServletRequestX = new HttpServletRequestX(request);
 
-    if (accept.acceptHtml()) {
+            AcceptHeader accept   = httpServletRequestX.getAccept();
+            String acceptCharset  = httpServletRequestX.getAcceptCharset();
+            String acceptEncoding = httpServletRequestX.getAcceptEncoding();
+            String acceptLanguage = httpServletRequestX.getAcceptLanguage();
 
-        renderHtml();
+            if (accept.acceptHtml()) {
 
-    } else if (accept.acceptJson()) {
+                renderHtml();
 
-        renderJson();
+            } else if (accept.acceptJson()) {
 
-    } else {
+                renderJson();
 
-        ... // handle the request otherwise
+            } else {
 
-    }
+                ... // handle the request otherwise
 
-}
-<code>
+            }
+
+        }

@@ -1,16 +1,19 @@
 <project xmlns="http://maven.apache.org/DECORATION/1.1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
-         name="Doctest">
+         name="HttpServletRequestX">
     <bannerLeft>
         <name>HttpServletRequestX documentation and API documentation</name>
-        <url>https://github.com/roughy/???</url>
+        <href>https://github.com/roughy/HttpServletRequestX</href>
     </bannerLeft>
     <body>
         <menu name="Overview">
             <item name="README" href="README.html"/>
             <item name="CHANGES" href="CHANGES.html"/>
             <item name="TODOS" href="TODO.html"/>
+        </menu>
+        <menu name="API">
+            <item name="API documentation" href="Doctests.html"/>
         </menu>
     </body>
     <skin>
