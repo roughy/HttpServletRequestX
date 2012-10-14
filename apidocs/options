@@ -1,23 +1,23 @@
 -classpath
-'/Users/mreinwarth/projects/marco/HttpServletRequestX/target/classes:/Users/mreinwarth/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/mreinwarth/.m2/repository/org/mockito/mockito-all/1.9.5-rc1/mockito-all-1.9.5-rc1.jar:/Users/mreinwarth/.m2/repository/junit/junit-dep/4.8.1/junit-dep-4.8.1.jar:/Users/mreinwarth/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/Users/mreinwarth/.m2/repository/com/google/inject/guice/3.0/guice-3.0.jar:/Users/mreinwarth/.m2/repository/javax/servlet/servlet-api/3.0-alpha-1/servlet-api-3.0-alpha-1.jar:/Users/mreinwarth/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar'
+'/scratch/jenkins/workspace/HttpServletRequestX/target/classes:/home/jenkins/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/home/jenkins/.m2/repository/org/mockito/mockito-all/1.9.5-rc1/mockito-all-1.9.5-rc1.jar:/home/jenkins/.m2/repository/junit/junit-dep/4.8.1/junit-dep-4.8.1.jar:/home/jenkins/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/jenkins/.m2/repository/com/google/inject/guice/3.0/guice-3.0.jar:/home/jenkins/.m2/repository/javax/servlet/servlet-api/3.0-alpha-1/servlet-api-3.0-alpha-1.jar:/home/jenkins/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar'
 -encoding
 'UTF-8'
 -protected
 -sourcepath
-'/Users/mreinwarth/projects/marco/HttpServletRequestX/src/main/java'
+'/scratch/jenkins/workspace/HttpServletRequestX/src/main/java'
 -author
 -bottom
 'Copyright &#169; 2012. All Rights Reserved.'
 -charset
 'UTF-8'
 -d
-'/Users/mreinwarth/projects/marco/HttpServletRequestX/target/site/apidocs'
+'/scratch/jenkins/workspace/HttpServletRequestX/target/site/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
 'HttpServletRequestX 0.1-SNAPSHOT API'
 -linkoffline
-'http://download.oracle.com/javase/6/docs/api' '/Users/mreinwarth/projects/marco/HttpServletRequestX/target/javadoc-bundle-options'
+'http://download.oracle.com/javase/6/docs/api' '/scratch/jenkins/workspace/HttpServletRequestX/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
