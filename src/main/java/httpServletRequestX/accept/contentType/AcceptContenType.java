@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * Accept header content type implementation to the HTTP 1.1 specification. Sorting the priority of all content-types is
  * based on the quality flag. An missing quality flag will be automatically set to the highest priority. TODO: level
- * flag is currently ignored. {@link http://www.http.specification.de/}
+ * flag is currently ignored. For more information see: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */
@@ -93,7 +93,7 @@ public class AcceptContenType implements Comparable<AcceptContenType> {
     /**
      * Content type {@link Comparator} based on the quality
      * 
-     * @return
+     * @return one of the values -1, 0 or 1
      */
     public int compareTo(final AcceptContenType other) {
         if (other.quality > quality) {

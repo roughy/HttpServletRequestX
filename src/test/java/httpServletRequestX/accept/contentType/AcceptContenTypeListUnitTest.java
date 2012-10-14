@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test case for {@See AcceptContenTypeList}
+ * Unit test case for {@link AcceptContenTypeList}
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com
  */

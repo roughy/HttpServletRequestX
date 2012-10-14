@@ -1,5 +1,6 @@
 package httpServletRequestX.accept.header;
 
+import httpServletRequestX.accept.contentType.AcceptContenType;
 import httpServletRequestX.accept.contentType.AcceptContenTypeList;
 
 /**
@@ -41,7 +42,7 @@ public interface AcceptHeader {
     /**
      * Return the list of all found content types
      * 
-     * @return list of {@see AcceptContenType}
+     * @return list of {@link AcceptContenType}
      */
     AcceptContenTypeList getContentTypes();
 

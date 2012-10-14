@@ -126,7 +126,7 @@ public class AcceptHeaderImpl implements AcceptHeader {
 
     /*
      * (non-Javadoc)
-     * @see java.lang.Object#toString()
+     * @link java.lang.Object#toString()
      */
     @Override
     public String toString() {

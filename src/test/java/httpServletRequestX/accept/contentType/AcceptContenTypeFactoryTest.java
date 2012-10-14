@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for {@see AcceptContenTypeFactory}
+ * Tests for {@link AcceptContenTypeFactory}
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */

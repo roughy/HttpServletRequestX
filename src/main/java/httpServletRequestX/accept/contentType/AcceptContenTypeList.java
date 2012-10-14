@@ -3,7 +3,7 @@ package httpServletRequestX.accept.contentType;
 import java.util.ArrayList;
 
 /**
- * A {@link ArrayList} of {@see AcceptContenType}.
+ * A {@link ArrayList} of {@link AcceptContenType}.
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
  */

@@ -8,12 +8,15 @@
     </bannerLeft>
     <body>
         <menu name="Overview">
-            <item name="README" href="README.html"/>
-            <item name="CHANGES" href="CHANGES.html"/>
-            <item name="TODOS" href="TODO.html"/>
+            <item name="Readme" href="README.html"/>
+            <item name="Changelog" href="CHANGES.html"/>
+            <item name="Project information" href="project-info.html"/>
+            <item name="Todo's" href="TODO.html"/>
         </menu>
         <menu name="API">
-            <item name="API documentation" href="Doctests.html"/>
+            <item name="DocTests" href="Doctests.html"/>
+            <item name="JavaDoc of src" href="apidocs/index.html"/>
+            <item name="JavaDoc of test" href="testapidocs/index.html"/>
         </menu>
     </body>
     <skin>

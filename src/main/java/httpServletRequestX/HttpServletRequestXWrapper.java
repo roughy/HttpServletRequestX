@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * This library wraps the {@see HttpServletRequest} and provides a set of convinience functions to handle the accept
+ * This library wraps the {@link HttpServletRequest} and provides a set of convenience functions to handle the accept
  * content type options.
  * 
  * @author Marco Reinwarth <marcoreinwarth@gmail.com>
@@ -18,8 +18,8 @@ public class HttpServletRequestXWrapper extends HttpServletRequestWrapper {
     /**
      * Constructor
      * 
-     * @param request the {@see HttpServletRequest} object that has to be wrapped
-     * @param acceptHeader the {@see AcceptHeader} object used for the content parsing
+     * @param request the {@link HttpServletRequest} object that has to be wrapped
+     * @param acceptHeader the {@link AcceptHeader} object used for the content parsing
      */
     public HttpServletRequestXWrapper(final HttpServletRequest request, final AcceptHeader acceptHeader) {
         super(request);
@@ -29,9 +29,9 @@ public class HttpServletRequestXWrapper extends HttpServletRequestWrapper {
 
     /**
      * Convenience getter function for the accept header (e.g. "ACCEPT: text/html"). Parses the content string and
-     * builds the {@see AcceptHeader}
+     * builds the {@link AcceptHeader}
      * 
-     * @return the {@see AcceptHeader} parsed out of the request header string (e.g. "ACCEPT: text/html")
+     * @return the {@link AcceptHeader} parsed out of the request header string (e.g. "ACCEPT: text/html")
      */
     public AcceptHeader getAccept() {
         return acceptHeader.setContent(getHeader("accept"));
