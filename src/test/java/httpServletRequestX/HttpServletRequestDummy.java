@@ -22,11 +22,15 @@ import javax.servlet.http.HttpSession;
  */
 public class HttpServletRequestDummy implements HttpServletRequest {
 
-    public String       accept         = "text/html;q=0.9,application/json,text/*;q=0.1";
+    public String       accept         = "text/*;q=0.5,application/json,text/html,application/*;q=0.1";
     public String       acceptCharset  = "UTF-8";
     public String       acceptEncoding = "UTF-8";
     public String       acceptLanguage = "de-de";
     public final String others         = "...";
+
+    public String getTop() {
+        return "application/json";
+    }
 
     /**
      * Only returns values if parameter name is one of the values [accept | accept-charset | accept-encoding |

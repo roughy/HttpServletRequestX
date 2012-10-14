@@ -1,6 +1,5 @@
 package httpServletRequestX;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import httpServletRequestX.accept.header.AcceptHeader;
 
@@ -30,14 +29,59 @@ public class HttpServletRequestXDocTest extends DocTest {
     }
 
     @Test
-    public void testGetAccept() throws Exception {
-        sayNextSection("Accept");
+    public void testGetAcceptGetTop() throws Exception {
+        sayNextSection("Accept - getTop()");
+        say("A accept header will be parsed when using HttpServletRequestX library. The created object of type AcceptHeader gives you the "
+                + "convenience function \"getTop()\" that returns the accept content type with the highest quality value. If more than one "
+                + "content type have the highest quality value, than the first one will be returned.");
+
+        say("A request with the following header:");
+        sayPreformattedCode("Accept: " + dummyRequest.accept);
 
         AcceptHeader accept = httpServletRequestX.getAccept();
-        assertEquals("application/json", accept.getTop());
-        assertTrue(accept.acceptHtml());
-        assertTrue(accept.acceptJson());
+        assertEqualsAndSay(dummyRequest.getTop(), accept.getTop(), "getTop() returns the content type : \"" + accept.getTop() + "\"");
+    }
+
+    @Test
+    public void testGetAcceptHtml() throws Exception {
+        sayNextSection("Accept - acceptHtml()");
+        say("The object of type AcceptHeader gives you also the convenience function \"acceptHtml()\" that validates if the client accepts "
+                + "the content type \"text/html\".");
+
+        say("A request with the following header:");
+        sayPreformattedCode("Accept: " + dummyRequest.accept);
+
+        AcceptHeader accept = httpServletRequestX.getAccept();
+        assertTrueAndSay(accept.acceptHtml(), "The response of acceptHtml() is " + accept.acceptHtml() + " in this case.");
+    }
+
+    @Test
+    public void testGetAcceptJson() throws Exception {
+        sayNextSection("Accept - acceptJson()");
+        say("The object of type AcceptHeader gives you also the convenience function \"acceptJson()\" that validates if the client accepts "
+                + "the content type \"application/json\".");
+
+        say("A request with the following header:");
+        sayPreformattedCode("Accept: " + dummyRequest.accept);
+
+        AcceptHeader accept = httpServletRequestX.getAccept();
+        assertTrueAndSay(accept.acceptJson(), "The response of acceptJson() is " + accept.acceptJson() + " in this case.");
+
         assertTrue(accept.acceptType("application/json"));
+    }
+
+    @Test
+    public void testGetAcceptType() throws Exception {
+        sayNextSection("Accept - acceptType()");
+        say("The object of type AcceptHeader gives you also the convenience function \"acceptType(String contentType)\" that validates if the client "
+                + "accepts the given content type.");
+
+        say("A request with the following header:");
+        sayPreformattedCode("Accept: " + dummyRequest.accept);
+
+        AcceptHeader accept = httpServletRequestX.getAccept();
+        assertTrueAndSay(accept.acceptType("application/json"),
+                "The response of acceptType(\"application/json\") is " + accept.acceptType("application/json") + " in this case.");
     }
 
     @Test
