@@ -4,7 +4,7 @@
     <groupId>com.github.roughy.http.util</groupId>
     <artifactId>HttpServletRequestX</artifactId>
     <name>HttpServletRequestX</name>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <description>Extension for HttpServletRequest. Easy accessing for request accept header.</description>
     <url>https://github.com/roughy/HttpServletRequestX</url>
     <inceptionYear>2012</inceptionYear>
