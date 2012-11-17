@@ -243,30 +243,78 @@ span.highlight {
 			<div class="wrapper">			
             	<br/>
             	<a href="./index.html">back to index page</a><br/>
-            	<div class="small">Doctest originally perfomed at: Sun Oct 14 07:17:15 EDT 2012</div>
+            	<div class="small">Doctest originally perfomed at: Sat Nov 17 19:58:55 CET 2012</div>
             	
             	<div class="menu">
 	<ul>
 					<li>
-				<a href="#section1">Accept</a>
+				<a href="#section1">Accept - getTop()</a>
 			</li>
 			<li>
-				<a href="#section2">Accept Charset</a>
+				<a href="#section2">Accept - acceptHtml()</a>
 			</li>
 			<li>
-				<a href="#section3">Accept Encoding</a>
+				<a href="#section3">Accept - acceptJson()</a>
 			</li>
 			<li>
-				<a href="#section4">Accept Language</a>
+				<a href="#section4">Accept - acceptType()</a>
+			</li>
+			<li>
+				<a href="#section5">Accept Charset</a>
+			</li>
+			<li>
+				<a href="#section6">Accept Encoding</a>
+			</li>
+			<li>
+				<a href="#section7">Accept Language</a>
 			</li>
 	</ul>
 </div><h1>
-	<a name="section1"> Accept </a>
+	<a name="section1"> Accept - getTop() </a>
 	<a class="link-to-top" href="#">
 		(top)
 	</a>
-</h1><h1>
-	<a name="section2"> Accept Charset </a>
+</h1><p>A accept header will be parsed when using HttpServletRequestX library. The created object of type AcceptHeader gives you the convenience function "getTop()" that returns the accept content type with the highest quality value. If more than one content type have the highest quality value, than the first one will be returned.</p><p>A request with the following header:</p><pre>
+	<code>
+Accept: text/*;q=0.5,application/json,text/html,application/*;q=0.1
+	</code>
+</pre><div class="box correct">
+	getTop() returns the content type : "application/json"
+</div><h1>
+	<a name="section2"> Accept - acceptHtml() </a>
+	<a class="link-to-top" href="#">
+		(top)
+	</a>
+</h1><p>The object of type AcceptHeader gives you also the convenience function "acceptHtml()" that validates if the client accepts the content type "text/html".</p><p>A request with the following header:</p><pre>
+	<code>
+Accept: text/*;q=0.5,application/json,text/html,application/*;q=0.1
+	</code>
+</pre><div class="box correct">
+	The response of acceptHtml() is true in this case.
+</div><h1>
+	<a name="section3"> Accept - acceptJson() </a>
+	<a class="link-to-top" href="#">
+		(top)
+	</a>
+</h1><p>The object of type AcceptHeader gives you also the convenience function "acceptJson()" that validates if the client accepts the content type "application/json".</p><p>A request with the following header:</p><pre>
+	<code>
+Accept: text/*;q=0.5,application/json,text/html,application/*;q=0.1
+	</code>
+</pre><div class="box correct">
+	The response of acceptJson() is true in this case.
+</div><h1>
+	<a name="section4"> Accept - acceptType() </a>
+	<a class="link-to-top" href="#">
+		(top)
+	</a>
+</h1><p>The object of type AcceptHeader gives you also the convenience function "acceptType(String contentType)" that validates if the client accepts the given content type.</p><p>A request with the following header:</p><pre>
+	<code>
+Accept: text/*;q=0.5,application/json,text/html,application/*;q=0.1
+	</code>
+</pre><div class="box correct">
+	The response of acceptType("application/json") is true in this case.
+</div><h1>
+	<a name="section5"> Accept Charset </a>
 	<a class="link-to-top" href="#">
 		(top)
 	</a>
@@ -283,7 +331,7 @@ Accept-Charset: any other charset
 </pre><div class="box correct">
 	getAcceptCharset() returns the content of header unparsed: "any other charset"
 </div><h1>
-	<a name="section3"> Accept Encoding </a>
+	<a name="section6"> Accept Encoding </a>
 	<a class="link-to-top" href="#">
 		(top)
 	</a>
@@ -300,7 +348,7 @@ Accept-Encoding: any other encoding
 </pre><div class="box correct">
 	getAcceptEncoding() returns the content of header unparsed: "any other encoding"
 </div><h1>
-	<a name="section4"> Accept Language </a>
+	<a name="section7"> Accept Language </a>
 	<a class="link-to-top" href="#">
 		(top)
 	</a>
