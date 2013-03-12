@@ -14,6 +14,7 @@ See [maven central](http://search.maven.org/#search|ga|1|a%3A%22com.github.rough
 
 ## Usage
 
+<pre>
         import de.roughy.util.http.httpServletRequestX.HttpServletRequestX;
         import de.roughy.util.http.httpServletRequestX.accept.header.AcceptHeader;
 
@@ -41,3 +42,4 @@ See [maven central](http://search.maven.org/#search|ga|1|a%3A%22com.github.rough
             }
 
         }
+</pre>
