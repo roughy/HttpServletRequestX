@@ -41,7 +41,3 @@ See [maven central](http://search.maven.org/#search|ga|1|a%3A%22com.github.rough
             }
 
         }
-
-## More
-
-[Github pages](http://roughy.github.com/HttpServletRequestX/)
