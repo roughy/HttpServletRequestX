@@ -1,4 +1,4 @@
-httpServletRequestX.accept.contentType
-httpServletRequestX.accept.header
 httpServletRequestX
 httpServletRequestX.inject
+httpServletRequestX.accept.contentType
+httpServletRequestX.accept.header
